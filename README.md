@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="public/ss/home.PNG" width="1000" alt="Home"></a></p>
+<p align="center"><a href="" target="_blank"><img src="public/ss/home.png" width="1000" alt="Home"></a></p>
 
 <p align="center">
 Admin Dashboard
