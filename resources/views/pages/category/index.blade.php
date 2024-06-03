@@ -79,7 +79,7 @@
                                                 <td>{{ $category->name }}
                                                 </td>
                                                 <td>
-                                                    <img src="{{ Storage::url('public/assets/category/' . $category->image) }}"
+                                                    <img src="{{ Storage::url('public/category/' . $category->image) }}"
                                                         alt="{{ $category->name }}" class="img-thumbnail" width="80">
                                                 </td>
                                                 <td>{{ $category->created_at }}</td>

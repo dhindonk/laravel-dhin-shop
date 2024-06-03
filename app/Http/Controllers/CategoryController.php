@@ -38,9 +38,9 @@ class CategoryController extends Controller
         $imageName = null;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
+            $imageName = time();
             // Simpan gambar ke direktori storage
-            $image->storeAs('public/assets/category', $imageName);
+            $image->storeAs('public/category', $imageName);
             $validated['image'] = $imageName;
         }
 
@@ -82,14 +82,14 @@ class CategoryController extends Controller
     
         if ($request->hasFile('image')) {
             // Hapus gambar lama jika ada
-            if (Storage::exists('public/assets/category/' . $category->image)) {
-                Storage::delete('public/assets/category/' . $category->image);
+            if (Storage::exists('public/category/' . $category->image)) {
+                Storage::delete('public/category/' . $category->image);
             }
             
             // Simpan gambar baru
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->storeAs('public/assets/category', $imageName);
+            $image->storeAs('public/category', $imageName);
             $validated['image'] = $imageName;
         }
     
@@ -105,8 +105,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if (Storage::disk('public')->exists('assets/category/' . $category->image)) {
-            Storage::disk('public')->delete('assets/category/' . $category->image);
+        if (Storage::disk('public')->exists('category/' . $category->image)) {
+            Storage::disk('public')->delete('category/' . $category->image);
         }
         $category->delete();
         return redirect()->route('category.index')->with('danger', 'Category deleted successfully');
