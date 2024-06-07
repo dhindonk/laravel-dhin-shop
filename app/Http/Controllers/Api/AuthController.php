@@ -13,18 +13,25 @@ class AuthController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|max:100',
-            'email' => 'required|unique:users|max:100',
+            'email' => 'required|email|max:100',
             'password' => 'required',
         ]);
+
+        if (User::where('email', $validated['email'])->exists()) {
+            return response()->json([
+                'message' => 'Email sudah terdaftar',
+            ], 400);
+        }
+
         $validated['password'] = Hash::make($validated['password']);
+
         $user = User::create($validated);
-        // $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            // 'access_token' => $token,
             'user' => $user,
         ], 201);
     }
+
 
     public function logout(Request $request)
     {
