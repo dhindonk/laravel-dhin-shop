@@ -16,7 +16,6 @@ class Midtrans {
         $this->isProduction = config('midtrans.is_production');
         $this->isSanitized = config('midtrans.is_sanitized');
         $this->is3ds = config('midtrans.is_3ds');
-
         $this->_configureMidtrans();
     }
 

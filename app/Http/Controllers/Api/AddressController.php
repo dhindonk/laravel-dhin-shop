@@ -77,10 +77,36 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
     public function update(Request $request, string $id)
     {
-        //
+        $address = Address::where('id', $id)->where('user_id', $request->user()->id)->first();
+
+        if (!$address) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Address not found',
+            ], 404);
+        }
+
+        $address->update([
+            'name' => $request->name,
+            'full_address' => $request->full_address,
+            'phone' => $request->phone,
+            'prov_id' => $request->prov_id,
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'postal_code' => $request->postal_code,
+            'is_default' => $request->is_default,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Address updated',
+            'data' => $address,
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.

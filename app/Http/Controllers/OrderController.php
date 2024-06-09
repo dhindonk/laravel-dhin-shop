@@ -64,6 +64,9 @@ class OrderController extends Controller
         if ($request->status == 'on_delivery') {
             $this->sendNotificationToUser($order->first()->user_id, 'Paket Dikirim dengan nomor resi ' . $request->shipping_resi);
         }
+        if ($request->status == 'canceled') {
+            $this->sendNotificationToUser($order->first()->user_id, 'Paket Gagal Dikirim dengan nomor resi ' . $request->shipping_resi);
+        }
         return redirect()->route('order.index');
     }
     public function sendNotificationToUser($userId, $message)
