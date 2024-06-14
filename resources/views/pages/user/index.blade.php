@@ -70,8 +70,8 @@
 
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Roles</th>
+                                            {{-- <th>Phone</th>
+                                            <th>Roles</th> --}}
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -83,12 +83,12 @@
                                                 <td>
                                                     {{ $user->email }}
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {{ $user->phone }}
                                                 </td>
                                                 <td>
                                                     {{ $user->roles }}
-                                                </td>
+                                                </td> --}}
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">

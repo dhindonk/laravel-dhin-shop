@@ -29,12 +29,13 @@
                         <div class="card-body">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.index') }}" style="font-weight: 600">All <span class="badge badge-primary">5</span></a>
+                                    <a class="nav-link" href="{{ route('user.index') }}" style="font-weight: 600">All <span
+                                            class="badge badge-primary">5</span></a>
                                 </li>
 
                                 <li class="nav-item ml-4">
-                                    <a class="nav-link active" href="{{ route('user.create') }}" class="badge badge-primary"
-                                       >Add New</a>
+                                    <a class="nav-link active" href="{{ route('user.create') }}"
+                                        class="badge badge-primary">Add New</a>
                                 </li>
                             </ul>
                         </div>
@@ -48,7 +49,7 @@
                 <div class="card">
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
-                       
+
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
@@ -96,7 +97,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Phone</label>
                                 <input type="number" class="form-control" name="phone">
                             </div>
@@ -117,8 +118,8 @@
                                         <span class="selectgroup-button">User</span>
                                     </label>
 
-                                </div>
-                            </div>
+                                </div> 
+                            </div> --}}
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

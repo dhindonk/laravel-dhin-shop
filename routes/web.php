@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -18,9 +19,7 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', function () {
-        return view('pages.dashboard');
-    })->name('home');
+    Route::get('home', [Controller::class, 'salesData'])->name('home');
     Route::resource('user', UserController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);

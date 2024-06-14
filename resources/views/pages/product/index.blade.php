@@ -52,7 +52,7 @@
                             <div class="card-body">
 
                                 <div class="float-left">
-                                    <form method="GET" action="{{ route('user.index') }}">
+                                    <form method="GET" action="{{ route('product.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -80,8 +80,7 @@
                                             <tr>
                                                 <td>{{ $product->name }}
                                                 </td>
-                                                <td>{{ $product->category->name }}
-                                                </td>
+                                                <td>{{ $product->category ? $product->category->name : 'No Category' }}</td>
                                                 <td class="text-right"> {{ number_format($product->price) }}</td>
                                                 <td class="text-right"> {{ number_format($product->stock) }}</td>
                                                 <td> {!! Str::limit($product->description, 10, '...') !!}</td>
@@ -99,7 +98,7 @@
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
-                                                        </a> 
+                                                        </a>
                                                         <form id="deleteForm_{{ $product->id }}"
                                                             action="{{ route('product.destroy', $product->id) }}"
                                                             method="POST" style="display: inline;" class="ml-2">

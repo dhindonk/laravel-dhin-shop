@@ -19,8 +19,6 @@ class UserSeeder extends Seeder
             'name' => 'Admin Gudang',
             'email' => 'dhinshop@gmail.com',
             'password' => Hash::make('121212'),
-            'phone' => '08871923885',
-            'roles' => 'ADMIN',
         ]);
     }
 }

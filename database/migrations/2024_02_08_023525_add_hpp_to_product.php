@@ -9,20 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('products', function (Blueprint $table) {
-            $table->double('hpp')->after('description')->default(0);
-        });
-    }
+    // public function up(): void
+    // {
+    //     Schema::table('products', function (Blueprint $table) {
+    //         $table->double('hpp')->after('description')->default(0);
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('hpp');
-        });
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  */
+    // public function down(): void
+    // {
+    //     Schema::table('products', function (Blueprint $table) {
+    //         $table->dropColumn('hpp');
+    //     });
+    // }
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -14,11 +15,24 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::orderBy('id', 'DESC')->when($request->input('name'), function ($query, $name) {
-            return $query->where('name', 'like', '%' . $name . '%');
-        })->paginate(10);
+        // Ambil input pencarian dari request
+        $searchTerm = $request->input('name');
+    
+        // Query produk dengan kategori terkait
+        $productsQuery = Product::with('category') // Asumsikan Anda memiliki relationship 'category' di model Product
+            ->orderBy('id', 'DESC');
+    
+        // Terapkan pencarian jika ada
+        if ($searchTerm) {
+            $productsQuery->where('name', 'like', '%' . $searchTerm . '%');
+        }
+    
+        // Paginate hasilnya
+        $products = $productsQuery->paginate(10);
+    
         return view('pages.product.index', compact('products'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
