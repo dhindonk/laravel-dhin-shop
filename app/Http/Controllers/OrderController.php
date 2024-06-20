@@ -64,10 +64,10 @@ class OrderController extends Controller
             'shipping_resi' => $request->shipping_resi,
         ]);
         if ($request->status == 'on_delivery') {
-            $this->sendNotificationToUser($order->first()->user_id, 'Paket Sedang Dikirim dengan nomor resi ' . $request->shipping_resi);
+            $this->sendNotificationToUser($order->first()->user_id, 'Paket Sedang Dikirim dengan nomor resi : ' . $request->shipping_resi);
         }
         if ($request->status == 'canceled') {
-            $this->sendNotificationToUser($order->first()->user_id, 'Paket Gagal Dikirim dengan nomor resi ' . $request->shipping_resi);
+            $this->sendNotificationToUser($order->first()->user_id, 'Paket Gagal Dikirim dengan nomor resi : ' . $request->shipping_resi);
         }
         return redirect()->route('order.index');
     }
@@ -77,7 +77,7 @@ class OrderController extends Controller
         $name = $user->name;
         $token = $user->fcm_id;
         $messaging = app('firebase.messaging');
-        $notification = Notification::create('Hallo, ' . $name . 'Kabar terbaru nih', $message);
+        $notification = Notification::create('Hallo, ' . $name . '. Kabar terbaru nih!', $message);
         $message = CloudMessage::withTarget('token', $token)
             ->withNotification($notification);
         $messaging->send($message);
