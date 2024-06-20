@@ -21,8 +21,7 @@ class ProductController extends Controller
             })
             ->when($request->name, function ($query) use ($request) {
                 return $query->where('name', 'like', '%' .  $request->name . '%');
-            })
-            ->paginate(10);
+            });
         return response()->json([
             'message' => 'Success',
             'data' => $products
